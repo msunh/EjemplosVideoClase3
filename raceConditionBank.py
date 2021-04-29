@@ -1,17 +1,17 @@
-import threading
-import time
-import random
+import threading    # para manejar threads 
+import time         # para implementar retardos
+import random       # para generar números/retardos aleatorios  
 
-movimientos = [-10000, 50000]
+movimientos = [-10000, 50000]   # simula movimientos en la cuenta extraccion/deposito
 
-operaciones = []
+operaciones = []    # se guardaran objetos thread despues de generarlos para poder generar luego operaciones sobre esos objetos usando bucles
 
 class cuentaBancaria():
-    def __init__(self, saldo_inicial):
-        self.saldo = saldo_inicial
+    def __init__(self, saldo_inicial): #  método con atributo en constructor que representa el saldo de la cuenta
+        self.saldo = saldo_inicial      # inicializa saldo
 
-    def movimiento(self,monto):
-        time.sleep(random.randint(1,5)/10)
+    def movimiento(self,monto):             #método movimiento actualiza y evalua el saldo de acuerdo al monto recibido si son depositos , recibira montos positivos y son extracciones negativos
+        time.sleep(random.randint(1,5)/10)  #se incorporan retardos aleatorios para simular una situacion no determinista
         copia_local = self.saldo
         copia_local += monto
         time.sleep(random.randint(1,5)/10)
